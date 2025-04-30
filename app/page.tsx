@@ -1,24 +1,36 @@
 import Image from 'next/image';
 import PrimaryButton from '@/app/components/PrimaryButton';
 import SecondaryButton from './components/SecondaryButton';
+import logoMainPage from './statics/logo-main.png';
+import consultingRoom from './statics/consulting-room.jpeg';
 
 export default function Home() {
   return (
-    <section>
+    <section className="w-full">
       <article className="flex flex-col justify-center items-center">
-        <figure className='relative p-6'>
+        <picture className="relative p-6">
           <Image
-          className='rounded-[60px]'
-            src="https://images.pexels.com/photos/5336911/pexels-photo-5336911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            className="main-image w-96 h-[700px] md:w-[700] md:h-[914] lg:w-[1407] lg:h-[723] object-cover"
+            src={consultingRoom}
             width={400}
             height={700}
             alt="Picture of the author"
           />
-          <div className='absolute bottom-0 right-0 p-12 bg-white rounded-[35%]'>LOGO MINDNEST</div>
-        </figure>
-        <p className='m-2 text-center text-lg'>Encuentra el espacio perfecto <br />para tu práctica profesional.</p>
-        <div className='flex gap-1 m-1'>
-          <PrimaryButton content={"Iniciar sesión"} />
+
+          <Image
+            className="absolute bottom-8 -right-2"
+            src={logoMainPage}
+            width={250}
+            height={50}
+            alt="logo MainNest"
+          />
+        </picture>
+        <p className="m-2 text-center text-lg">
+          Encuentra el espacio perfecto <br />
+          para tu práctica profesional.
+        </p>
+        <div className="flex gap-1 m-1">
+          <PrimaryButton content={'Iniciar sesión'} />
           <SecondaryButton content={'Register'} />
         </div>
       </article>

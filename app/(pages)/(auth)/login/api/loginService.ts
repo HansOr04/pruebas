@@ -27,8 +27,9 @@ export const loginService = () => {
 
         return response.data;
       } catch (error) {
-        console.error('Error en el login:', error);
-        throw error;
+        const wrappedError = new Error('Failed to log in. Endpoint: /auth/login', { cause: error });
+        console.error('Error en el login:', wrappedError);
+        throw wrappedError;
       }
     },
   };

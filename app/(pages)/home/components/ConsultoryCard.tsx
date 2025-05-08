@@ -1,17 +1,19 @@
+// app/(pages)/home/components/ConsultoryCard.tsx
+"use client";
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Consultory } from '@/app/shared/utils/mockData';
-
 
 interface ConsultoryCardProps {
   consultory: Consultory;
   onToggleFavorite?: (id: string) => void;
 }
 
-const ConsultoryCard: React.FC<ConsultoryCardProps> = ({ 
-  consultory, 
-  onToggleFavorite 
+const ConsultoryCard: React.FC<ConsultoryCardProps> = ({
+  consultory,
+  onToggleFavorite
 }) => {
   const [isFavorite, setIsFavorite] = useState(consultory.isFavorite || false);
 
@@ -25,18 +27,19 @@ const ConsultoryCard: React.FC<ConsultoryCardProps> = ({
   };
 
   return (
-    <div className="relative h-52">
+    <div className="relative h-full">
+      {/* Hacemos que todo el card sea clickeable y navegue a la página de detalles */}
       <Link href={`/spaces/${consultory.id}`} className="block h-full">
         <div className="consultory-card">
           {/* Background Image */}
-          <Image 
-            src={consultory.imageUrl} 
+          <Image
+            src={consultory.imageUrl}
             alt={consultory.name}
             fill
             className="object-cover"
             priority
           />
-          
+
           {/* Content with text over the image */}
           <div className="card-content">
             <div className="card-text">
@@ -45,7 +48,7 @@ const ConsultoryCard: React.FC<ConsultoryCardProps> = ({
                 {consultory.address}, {consultory.city} {consultory.zipCode}
               </p>
             </div>
-            
+
             {/* Rating */}
             <div className="card-rating">
               <span className="text-sm font-medium mr-1">{consultory.rating}</span>
@@ -54,17 +57,17 @@ const ConsultoryCard: React.FC<ConsultoryCardProps> = ({
               </svg>
             </div>
           </div>
-          
-          {/* L-shaped white corner - smaller and closer to heart icon */}
+
+          {/* L-shaped white corner */}
           <div className="card-corner"></div>
         </div>
       </Link>
-      
+
       {/* Heart Favorite Button */}
-      <button 
+      <button
         onClick={toggleFavorite}
         className="card-favorite"
-        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+        aria-label={isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}
       >
         {isFavorite ? (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ff0000" stroke="#ff0000" strokeWidth="1">

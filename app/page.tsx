@@ -10,13 +10,12 @@ export default function Home() {
       <article className="flex flex-col justify-center items-center">
         <picture className="relative p-6">
           <Image
-            className="main-image w-96 h-[700px] md:w-[700] md:h-[914] lg:w-[1407] lg:h-[723] object-cover"
+            className="main-image w-96 h-[700px] md:w-[700] md:h-[914] lg:w-[1407] lg:h-[723] object-cover rounded-[60px]"
             src={consultingRoom}
             width={400}
             height={700}
             alt="Picture of the author"
           />
-
           <Image
             className="absolute bottom-8 -right-2"
             src={logoMainPage}

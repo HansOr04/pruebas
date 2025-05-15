@@ -6,6 +6,16 @@ import FormInput from './FormInput';
 import RegisterPrompt from './RegisterPrompt';
 import { loginService } from '../api/loginService';
 
+// Definimos una interfaz para el tipo de error que esperamos
+interface ApiError {
+  response?: {
+    data?: {
+      message?: string;
+    };
+  };
+  message?: string;
+}
+
 export default function LoginForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -34,10 +44,13 @@ export default function LoginForm() {
 
       // Redirigir al dashboard después de iniciar sesión
       router.push('/dashboard');
-    } catch (error: any) {
+    } catch (error: unknown) {
+      // Tratamos el error como ApiError en lugar de any
+      const apiError = error as ApiError;
       setError(
-        error.response?.data?.message ||
-          'Error al iniciar sesión. Por favor, verifica tus credenciales.'
+        apiError.response?.data?.message || 
+        apiError.message ||
+        'Error al iniciar sesión. Por favor, verifica tus credenciales.'
       );
     } finally {
       setIsLoading(false);

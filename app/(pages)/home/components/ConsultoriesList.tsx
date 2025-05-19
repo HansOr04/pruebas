@@ -1,4 +1,6 @@
-"use client"
+// app/(pages)/home/components/ConsultoriesList.tsx
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import ConsultoryCard from './ConsultoryCard';
 import { Consultory, consultories as mockConsultories } from '@/app/shared/utils/mockData';
@@ -41,9 +43,9 @@ const ConsultoriesList: React.FC<ConsultoriesListProps> = ({
 
   const handleToggleFavorite = (id: string) => {
     setConsultories(prev => 
-      prev.map(consultory => 
-        consultory.id === id 
-          ? { ...consultory, isFavorite: !consultory.isFavorite } 
+      prev.map(consultory =>
+        consultory.id === id
+          ? { ...consultory, isFavorite: !consultory.isFavorite }
           : consultory
       )
     );
@@ -52,11 +54,11 @@ const ConsultoriesList: React.FC<ConsultoriesListProps> = ({
   if (filteredConsultories.length === 0) {
     return (
       <div className="text-center py-16">
-        <h3 className="text-xl font-semibold text-gray-600 mb-2">No consultories found</h3>
+        <h3 className="text-xl font-semibold text-gray-600 mb-2">No se encontraron resultados</h3>
         <p className="text-gray-500">
-          {favoritesOnly 
-            ? "You haven't added any consultories to your favorites yet." 
-            : "Try adjusting your search criteria."}
+          {favoritesOnly
+            ? "Aún no has añadido ningún consultorio a tus favoritos."
+            : "Intenta ajustar tus criterios de búsqueda."}
         </p>
       </div>
     );
@@ -65,11 +67,13 @@ const ConsultoriesList: React.FC<ConsultoriesListProps> = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {filteredConsultories.map(consultory => (
-        <ConsultoryCard 
-          key={consultory.id} 
-          consultory={consultory} 
-          onToggleFavorite={handleToggleFavorite}
-        />
+        <div key={consultory.id} className="h-52">
+          <ConsultoryCard
+            key={consultory.id}
+            consultory={consultory}
+            onToggleFavorite={handleToggleFavorite}
+          />
+        </div>
       ))}
     </div>
   );

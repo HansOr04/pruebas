@@ -1,3 +1,5 @@
+/* app/styles/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,23 @@
   --primary-color: #b5c6af;
   --primary-hover: #166534;
   --primary-text-color: #6b997d;
+  --background-color: #FFFFFF;
+  --text-color: #333333;
+  --light-gray: #F7F7F7;
+  --border-color: #E5E7EB;
+}
+
+/* Apply a sensible reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 /* Estilo para la imagen principal */
@@ -16,8 +35,7 @@
   --y: 10px;
   aspect-ratio: 1;
   border-radius: var(--r);
-  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%, #0000
-        72%);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%, #0000 72%);
   --_g: conic-gradient(
     from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),
     #0000 25%,
@@ -41,6 +59,11 @@
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.consultory-card:hover {
+  transform: translateY(-5px);
 }
 
 .card-content {
@@ -83,6 +106,11 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card-favorite:active {
+  transform: scale(1.2);
 }
 
 .card-rating {
@@ -93,4 +121,167 @@
   align-items: center;
   color: white;
   z-index: 2;
+}
+
+/* Office details page styles */
+.photo-gallery {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.gallery-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.gallery-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-dot.active {
+  background-color: white;
+}
+
+/* Amenity Icons */
+.amenity-icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.amenity-icon svg {
+  margin-right: 0.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary-text-color);
+}
+
+/* Review Cards */
+.review-card {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.review-card:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.reviewer-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* Booking Section */
+.booking-card {
+  background-color: #f9fafb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.booking-price {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.booking-unit {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.booking-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-text-color);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.booking-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Mobile bottom nav styles */
+.mobile-bottom-nav {
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Photo fade animation */
+.photo-fade {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation for loading skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 0.25rem;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }

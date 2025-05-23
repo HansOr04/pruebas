@@ -1,7 +1,14 @@
 export interface PrimaryButtonProps {
-    content: string;
+  content: string;
 }
 
 export interface SecondaryButtonProps {
-    content: string;
+  content: string;
+}
+
+export interface Space {
+  id: string;
+  name: string;
+  image: string;
+  isFavorite: boolean;
 }

@@ -1,6 +1,6 @@
-import ProfilePic from '../../components/shared/UI/ProfilePic';
-import ConsultoriesList from '@/app/(pages)/home/components/ConsultoriesList';
-import { consultories } from '@/app/shared/utils/mockData';
+import ProfilePic from '@/src/components/ui/Display/ProfilePic';
+import ConsultoriesList from '@/app/home/components/ConsultoriesList';
+import { consultoriesMockData as consultories } from '@/src/mocks/consultories/consultory.mock';
 
 export default function UsersPage() {
   const userName = 'Hans Ortiz';
@@ -14,7 +14,7 @@ export default function UsersPage() {
       <div className="w-full flex flex-col lg:flex-row items-center lg:items-center mb-8">
         <div className="flex-shrink-0 mb-4 lg:mb-0 lg:mr-10">
           <ProfilePic
-            src="/testProfilePic.PNG"
+            src="/images/testProfilePic.PNG"
             alt="User Photo"
             userName={userName}
             size="w-24 h-24 md:w-32 md:h-32 lg:w-56 lg:h-56 lg:rounded-lg lg:shadow-lg lg:shadow-gray-500/50 drop-shadow-md md:drop-shadow-lg"

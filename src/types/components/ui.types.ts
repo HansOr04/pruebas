@@ -28,6 +28,13 @@ export interface RatingDisplayProps {
   showCount?: boolean;
 }
 
+export interface ProfilePicProps {
+  src?: string;
+  alt: string;
+  userName: string;
+  size?: string;
+}
+
 // Tipos para componentes de layout
 export interface AuthLayoutProps {
   children: React.ReactNode;

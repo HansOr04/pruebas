@@ -1,6 +1,6 @@
-import Image from "next/image";
-import AuthHeader from "./AuthHeader";
-import { ReactNode } from "react";
+import Image from 'next/image';
+import AuthHeader from './AuthHeader';
+import { ReactNode } from 'react';
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface AuthLayoutProps {
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center gap-20">
+    <div className="w-full h-screen flex flex-col items-center justify-center gap-20">
       <Image
         src="https://images.pexels.com/photos/4769492/pexels-photo-4769492.jpeg"
         alt="Background"

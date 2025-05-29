@@ -1,4 +1,4 @@
-import axiosInstance from '../../../../shared/services/axiosConfig';
+import axiosInstance from '@/src/services/config/axiosConfig';
 
 interface LoginResponse {
   user: {
@@ -27,7 +27,10 @@ export const loginService = () => {
 
         return response.data;
       } catch (error) {
-        const wrappedError = new Error('Failed to log in. Endpoint: /auth/login', { cause: error });
+        const wrappedError = new Error(
+          'Failed to log in. Endpoint: /auth/login',
+          { cause: error }
+        );
         console.error('Error en el login:', wrappedError);
         throw wrappedError;
       }

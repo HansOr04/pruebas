@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import FormInput from './FormInput';
 import RegisterPrompt from './RegisterPrompt';
-import { loginService } from '../api/loginService';
+import { loginService } from '@/src/services/api/loginService';
 
 // Definimos una interfaz para el tipo de error que esperamos
 interface ApiError {
@@ -48,9 +48,9 @@ export default function LoginForm() {
       // Tratamos el error como ApiError en lugar de any
       const apiError = error as ApiError;
       setError(
-        apiError.response?.data?.message || 
-        apiError.message ||
-        'Error al iniciar sesión. Por favor, verifica tus credenciales.'
+        apiError.response?.data?.message ||
+          apiError.message ||
+          'Error al iniciar sesión. Por favor, verifica tus credenciales.'
       );
     } finally {
       setIsLoading(false);

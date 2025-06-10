@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import PrimaryButton from '@/app/components/PrimaryButton';
-import SecondaryButton from './components/SecondaryButton';
-import logoMainPage from './statics/logo-main.png';
-import consultingRoom from './statics/consulting-room.jpeg';
+import logoMainPage from '@/public/images/logo-main.png';
+import consultingRoom from '@/public/images/consulting-room.jpeg';
+import Button from '@/src/components/ui/Buttons/Button';
 
 export default function Home() {
   return (
@@ -29,8 +28,8 @@ export default function Home() {
           para tu práctica profesional.
         </p>
         <div className="flex gap-1 m-1">
-          <PrimaryButton content={'Iniciar sesión'} />
-          <SecondaryButton content={'Register'} />
+          <Button content="Iniciar sesión" />
+          <Button content="Registrarse" />
         </div>
       </article>
     </section>

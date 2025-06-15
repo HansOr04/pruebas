@@ -1,5 +1,5 @@
 import ProfilePic from '@/src/components/ui/Display/ProfilePic';
-import ConsultoriesList from '@/app/home/components/ConsultoriesList';
+import ConsultoriesList from '../../src/components/ui/home/ConsultoriesList';
 import { consultoriesMockData as consultories } from '@/src/mocks/consultories/consultory.mock';
 
 export default function UsersPage() {

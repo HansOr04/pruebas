@@ -1,4 +1,4 @@
-// app/(pages)/home/components/ConsultoryCard.tsx
+// app/home/components/ConsultoryCard.tsx
 'use client';
 
 import React, { useState } from 'react';

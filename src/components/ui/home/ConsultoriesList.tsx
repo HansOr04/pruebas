@@ -1,4 +1,4 @@
-// app/(pages)/home/components/ConsultoriesList.tsx
+// app/home/components/ConsultoriesList.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -75,7 +75,6 @@ const ConsultoriesList: React.FC<ConsultoriesListProps> = ({
       {filteredConsultories.map((consultory) => (
         <div key={consultory.id} className="h-52">
           <ConsultoryCard
-            key={consultory.id}
             consultory={consultory}
             onToggleFavorite={handleToggleFavorite}
           />

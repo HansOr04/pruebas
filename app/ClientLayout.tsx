@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
 import Navbar from "../app/components/shared/navigation/Navbar";
 import MobileBottomNav from "../app/components/shared/navigation/mobile/MobileBottomNav";
 
@@ -11,14 +12,16 @@ export default function ClientLayout({
 }>) {
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [isAuthPage, setIsAuthPage] = useState(false);
+  const pathname = usePathname();
+  
+  // Determinar si es página de auth basado en la ruta
+  const isAuthPage = pathname?.includes('/login') || 
+                     pathname?.includes('/register') || 
+                     pathname?.includes('/forgot-password');
   
   useEffect(() => {
+    // Marcar que estamos en el cliente
     setIsClient(true);
-    
-    // Check if current page is an auth page
-    const pathname = window.location.pathname;
-    setIsAuthPage(pathname.includes('/login') || pathname.includes('/register'));
     
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -34,18 +37,31 @@ export default function ClientLayout({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
   
+  // Mostrar un layout simple durante la hidratación
+  if (!isClient) {
+    return (
+      <main className="min-h-screen">
+        {children}
+      </main>
+    );
+  }
+  
   return (
     <>
-      {/* Only show Navbar on desktop and not on auth pages */}
-      {isClient && !isMobile && !isAuthPage && <Navbar />}
+      {/* Solo mostrar Navbar en desktop y no en páginas de auth */}
+      {!isMobile && !isAuthPage && <Navbar />}
       
-      {/* Adjust padding based on device type */}
-      <main className={`min-h-screen ${!isMobile ? 'px-4 md:px-8 lg:px-16 mx-auto max-w-screen-xl' : 'px-0'}`}>
+      {/* Ajustar padding basado en el tipo de dispositivo */}
+      <main className={`min-h-screen ${
+        !isMobile 
+          ? 'px-4 md:px-8 lg:px-16 mx-auto max-w-screen-xl' 
+          : 'px-0'
+      }`}>
         {children}
       </main>
       
-      {/* Show mobile bottom nav only on mobile and not on auth pages */}
-      {isClient && isMobile && !isAuthPage && <MobileBottomNav />}
+      {/* Mostrar navegación móvil solo en mobile y no en páginas de auth */}
+      {isMobile && !isAuthPage && <MobileBottomNav />}
     </>
   );
 }

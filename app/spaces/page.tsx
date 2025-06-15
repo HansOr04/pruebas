@@ -1,6 +1,6 @@
 // app/spaces/page.tsx
 import React, { Suspense } from 'react';
-import SpacesContent from './SpacesContent';
+import SpacesContent from '../../src/components/ui/spaces/SpaceDetailsContent';
 
 // Componente de carga para Suspense
 const SpacesLoading = () => (

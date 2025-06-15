@@ -1,6 +1,6 @@
 /* app/styles/globals.css */
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --primary-color: #b5c6af;
@@ -12,17 +12,9 @@
   --border-color: #e5e7eb;
 }
 
-/* Apply a sensible reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
 }
@@ -35,16 +27,15 @@ body {
   --y: 10px;
   aspect-ratio: 1;
   border-radius: var(--r);
-  --_m: /calc(2 * var(--r)) calc(2 * var(--r))
-    radial-gradient(#000 70%, #0000 72%);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%, #0000
+        72%);
   --_g: conic-gradient(
     from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),
     #0000 25%,
     #000 0
   );
   --_d: (var(--s) + var(--r));
-  mask:
-    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
+  mask: calc(100% - var(--_d) - var(--x)) 100% var(--_m),
     100% calc(100% - var(--_d) - var(--y)) var(--_m),
     radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 calc(100% + 1px))
       calc(-1 * var(--r) - var(--x)) calc(-1 * var(--r) - var(--y)),
@@ -135,8 +126,7 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -305,12 +295,11 @@ body {
   width: 250px;
   aspect-ratio: 1;
   border-radius: var(--r);
-  --_m: /calc(2 * var(--r)) calc(2 * var(--r))
-    radial-gradient(#000 70%, #0000 72%);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%, #0000
+        72%);
   --_g: conic-gradient(at calc(100% - var(--r)) var(--r), #0000 25%, #000 0);
   --_d: (var(--s) + var(--r));
-  mask:
-    calc(100% - var(--_d) - var(--x)) 0 var(--_m),
+  mask: calc(100% - var(--_d) - var(--x)) 0 var(--_m),
     100% calc(var(--_d) + var(--y)) var(--_m),
     radial-gradient(var(--s) at 100% 0, #0000 99%, #000 calc(100% + 1px))
       calc(-1 * var(--r) - var(--x)) calc(var(--r) + var(--y)),
